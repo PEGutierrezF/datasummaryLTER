@@ -1,4 +1,4 @@
-
+m_
 
 shrimps <- read.csv("data/shrimp.csv")
 head(shrimps)
@@ -26,3 +26,6 @@ qpb <- ggplot(sh.b, aes(x=observation , y=mean)) +
 
 qpa/qpb
 
+
+write.csv(sh.a, "qpa_shrimps.csv")
+write.csv(sh.a, "qpb_shrimps.csv")
