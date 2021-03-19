@@ -1,8 +1,9 @@
-m_
+
 
 shrimps <- read.csv("data/shrimp.csv")
 head(shrimps)
 
+unique(shrimps$Month)
 
 sh1 <- shrimps %>%
   group_by(stream, year, Month) %>% 
@@ -12,17 +13,19 @@ sh1 <- shrimps %>%
 sh1
 
 
-sh.a <- filter(sh1, stream=="QPB")  %>% rowid_to_column(var='observation')
+sh.a <- filter(sh1, stream=="QPB")  %>% rowid_to_column(var='observation') 
 sh.b <- filter(sh1, stream=="QPA")  %>% rowid_to_column(var='observation')
 
 
 qpa <- ggplot(sh.a, aes(x=observation , y=mean)) + 
   geom_line() +
-  geom_point() 
+  geom_point()+
+  theme_classic()
 
 qpb <- ggplot(sh.b, aes(x=observation , y=mean)) + 
   geom_line() +
-  geom_point() 
+  geom_point()+
+  theme_classic()
 
 qpa/qpb
 
