@@ -29,4 +29,4 @@ qpa/qpb
 
 
 write.csv(sh.a, "qpa_shrimps.csv")
-write.csv(sh.a, "qpb_shrimps.csv")
+write.csv(sh.b, "qpb_shrimps.csv")
