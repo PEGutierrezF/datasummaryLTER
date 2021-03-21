@@ -1,5 +1,13 @@
 
 
+# ---------------------------------------------
+# Data summary of Shrimp: Quebrada Prieta A and Prieta B 
+# 20 Mar 2021
+# Pablo E. Gutierrez-Fonseca
+# ---------------------------------------------
+#  
+
+
 shrimps <- read.csv("data/shrimp.csv")
 head(shrimps)
 
@@ -9,8 +17,6 @@ sh1 <- shrimps %>%
             sd = sd(Abundance, na.rm = T)) %>%
   arrange(year, match(Month, month.name))
 sh1
-
-
 
 
 sh.a <- filter(sh1, stream=="QPB")  %>% rowid_to_column(var='observation')
