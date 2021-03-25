@@ -18,12 +18,13 @@ sh1 <- shrimps %>%
   arrange(year, match(Month, month.name))
 sh1
 
+unique(shrimps$Month)
 
-sh.a <- filter(sh1, stream=="QPB")  %>% rowid_to_column(var='observation')
+sh.a <- filter(sh1, stream=="QPA")  %>% rowid_to_column(var='observation')
 sh.a$date <-as.Date(with(sh.a,paste(year,Month,day,sep="-")),"%Y-%b-%d")
 
 
-sh.b <- filter(sh1, stream=="QPA")  %>% rowid_to_column(var='observation')
+sh.b <- filter(sh1, stream=="QPB")  %>% rowid_to_column(var='observation')
 sh.b$date <-as.Date(with(sh.b,paste(year,Month,day,sep="-")),"%Y-%b-%d")
 
 qpa <- ggplot(sh.a, aes(x=date , y=mean)) + 
