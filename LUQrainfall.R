@@ -51,8 +51,8 @@ annotate("segment", x = 0, xend = 20, y = 4600, yend = 4600, colour = "mediumblu
 annotate("text", x = 200, y=5700, label = "Cumulative Rainfall at El Verde Field Station  \n Puerto Rico, 1975-2021",
          colour = "black",size=6.5, fontface="bold") 
 
-EV1 <-EV +  stat_summary(aes(group=1), fun=mean, geom="line", size=1, colour="blue")+
-  stat_summary(fun.data = mean_cl_quantile, geom = "ribbon", size = 1, aes(group=1),alpha = 0.2)
+EV1 <- EV +  stat_summary(aes(group=1), fun=mean, geom="line", size=1, colour="blue")+
+  stat_summary(fun.data = mean_cl_quantile, geom = "ribbon", size = 1, aes(group=1),alpha = 0.1)
 
 
 mean_cl_quantile <- function(x, q = c(0.1, 0.9), na.rm = TRUE){
