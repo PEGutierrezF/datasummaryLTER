@@ -9,12 +9,14 @@ library("extrafont")
 library(tidyverse)
 library("Hmisc")
 
-setwd("D:/LTER/01 Precipitation/Cumulative rainfall R")
 
-precip.frm=read.csv("precipitation.csv")
+precip.frm=read.csv("data/precipitation.csv")
 attach(precip.frm)
 precip.frm
 
+stat_sum_df <- function(fun, geom="crossbar", ...) { 
+  stat_summary(fun.data=fun, colour="blue", geom=geom, width=0.2, ...) 
+} 
 
 EV <- ggplot(precip.frm, aes(x= julian,y=mm, group=year)) + 
 geom_line(lwd = 0.6) +
@@ -32,7 +34,7 @@ theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold
 geom_line(data=subset(precip.frm, year == "1994"), colour="darkorange", size=0.9) +
 geom_line(data=subset(precip.frm, year == "2015"), colour="red", size=0.9) +
 geom_line(data=subset(precip.frm, year == "2010"), colour="skyblue2", size=0.9)+
-geom_line(data=subset(precip.frm, year == "2022"), colour="mediumblue", size=1.3)+
+#geom_line(data=subset(precip.frm, year == "2022"), colour="mediumblue", size=1.3)+
   
 annotate("text", x=35, y=5225, label= "2010", size = 6)+
 annotate("segment", x = 0, xend = 20, y = 5200, yend = 5200, colour = "skyblue2", size = 2)+
@@ -49,7 +51,8 @@ annotate("segment", x = 0, xend = 20, y = 4600, yend = 4600, colour = "mediumblu
 annotate("text", x = 200, y=5700, label = "Cumulative Rainfall at El Verde Field Station  \n Puerto Rico, 1975-2021",
          colour = "black",size=6.5, fontface="bold") 
 
-EV
+EV +  stat_summary(aes(group=1), fun=mean, geom="line", size=1, colour="blue")+
+  stat_summary(fun.data = mean_cl_boot, geom = "ribbon", size = 1, aes(group=1),alpha = 0.3)
 
 EV + ggsave("Rain.jpeg",  width = 30, height = 20, units = "cm")
 
