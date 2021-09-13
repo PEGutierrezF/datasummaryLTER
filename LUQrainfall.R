@@ -13,6 +13,7 @@ library("Hmisc")
 precip.frm=read.csv("data/precipitation.csv")
 attach(precip.frm)
 precip.frm
+tail(precip.frm)
 
 stat_sum_df <- function(fun, geom="crossbar", ...) { 
   stat_summary(fun.data=fun, colour="blue", geom=geom, width=0.2, ...) 
@@ -45,22 +46,26 @@ annotate("segment", x = 0, xend = 20, y = 5000, yend = 5000, colour = "red", siz
 annotate("text", x = 50, y=4825, label = "1994 drought", size = 6) +
 annotate("segment", x = 0, xend = 20, y = 4800, yend = 4800, colour = "darkorange" ,size = 2)+
 
-annotate("text", x = 63, y=4625, label = "Long-term Average", size = 6) +
+annotate("text", x = 80, y=4625, label = "Long-term Average (95% CI)", size = 6) +
 annotate("segment", x = 0, xend = 20, y = 4600, yend = 4600, colour = "mediumblue", size = 2)+
   
 annotate("text", x = 200, y=5700, label = "Cumulative Rainfall at El Verde Field Station  \n Puerto Rico, 1975-2021",
          colour = "black",size=6.5, fontface="bold") 
 
-EV1 <- EV +  stat_summary(aes(group=1), fun=mean, geom="line", size=1, colour="blue")+
-  stat_summary(fun.data = mean_cl_quantile, geom = "ribbon", size = 1, aes(group=1),alpha = 0.1)
+EV
 
-
-mean_cl_quantile <- function(x, q = c(0.1, 0.9), na.rm = TRUE){
+mean_cl_quantile <- function(x, q = c(0.025, 0.975), na.rm = TRUE){
   dat <- data.frame(y = mean(x, na.rm = na.rm),
                     ymin = quantile(x, probs = q[1], na.rm = na.rm),
                     ymax = quantile(x, probs = q[2], na.rm = na.rm))
   return(dat)
 }
+
+EV1 <- EV +  stat_summary(aes(group=1), fun=mean, geom="line", size=1, colour="blue")+
+  stat_summary(fun.data = mean_cl_quantile, geom = "ribbon", size = 1, aes(group=1),alpha = 0.1)
+
+
+
 
 
 #https://stackoverflow.com/questions/51993044/plot-time-series-with-ggplot-with-confidence-interval
