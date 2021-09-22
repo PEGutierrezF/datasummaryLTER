@@ -27,5 +27,10 @@ Carbon %>% group_by(stream) %>% summarise(Mean_sales = mean(value))
 
 Carbon %>%
   dplyr::group_by(stream, variable) %>%
-  dplyr::summarize(mean=mean(value, na.rm=TRUE))
+  dplyr::summarize(mean=mean(value, na.rm=TRUE), 
+#  low = CI90lo(value), 
+ # high= CI90hi(value),
+  min=min(value, na.rm=TRUE),
+  max=max(value,na.rm=TRUE), 
+  sd= sd(value, na.rm=TRUE))
 
