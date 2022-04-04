@@ -2,18 +2,21 @@
 
 
 
+# ---------------------------------------------
+# Canopy cover
+# 03 Apr 2022
+# Pablo E. Gutiérrez-Fonseca
+# pabloe.gutierrezfonseca@gmail.com
+# ---------------------------------------------
+#  
 
-setwd("D:/Curriculum/14_ Colaboracion/R help/Elena/")
+
 
 canopy <- "D:/LTER/24 data summary/datasummaryLTER/data/all_variables.xlsx"
 excel_sheets(path = canopy)
-
 canopyop <- read_excel(path = canopy, sheet = "canopy")
 
-
 canopyop$date <-as.POSIXct(canopyop$date,"%Y-%m-%d",tz = "UTC")
-
-
 canopyop$sd = as.numeric(canopyop$sd)
 
 
@@ -27,9 +30,8 @@ figure.canopy <- ggplot(canopyop, aes(x=date,y=value, colour=stream)) +
                 #position = position_dodge(width = 0.9),stat = "identity", 
                 width = 0, colour = "gray50") +
   # Labels
-  labs(x= 'Year', y= 'Canopy openness (%)') +
-  # labs(tag = "B") +
-  
+  labs(x= 'Year', y= 'Canopy openness (%, SD)') +
+
   theme_bw()+
   
   #Legend 
@@ -49,4 +51,4 @@ figure.canopy <- ggplot(canopyop, aes(x=date,y=value, colour=stream)) +
 
 figure.canopy
 
-ggsave("Canopy openness.jpeg", figure.canopy, width = 200, height = 180, units = "mm")
+ggsave("Canopy openness.jpeg", path = "figures", figure.canopy, width = 200, height = 180, units = "mm")
