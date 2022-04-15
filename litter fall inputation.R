@@ -31,6 +31,8 @@ imp.f.pA <- missForest(plotA1, maxiter = 10, ntree = 100,
                        xtrue = NA, parallelize = "no")
 
 dataimput <- imp.f.pA$ximp
+dataimput
+
 summary(dataimput)
 plot(dataimput$value,type="l")
 
