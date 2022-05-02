@@ -18,9 +18,9 @@
  df_QPA <- data.frame(bio_QPA, canopy_QPA)
 
  df_QPA.lm <- lm(bio_QPA ~ canopy_QPA, df_QPA)
+ summary(df_QPA.lm)
  
- 
- ggplot(df_QPA, aes(x=canopy_QPA, y=bio_QPA))+
+PrietaA <-  ggplot(df_QPA, aes(x=canopy_QPA, y=bio_QPA))+
    geom_point(size=4) +
    
    # Labels
@@ -33,11 +33,14 @@
    theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
    theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black")) +  #subaxis y
  
-   xlim(0,100) + ylim(-34,-24) +
+   xlim(0,80) + ylim(-34,-24) +
    geom_abline(slope = coef(df_QPA.lm)[["canopy_QPA"]], 
                intercept = coef(df_QPA.lm)[["(Intercept)"]])
  
- 
+ ggsave("Prieta A.jpeg", path = "figures", PrietaA, 
+        width = 200, height = 180, units = "mm")
+
+  
 # Prieta B ----------------------------------------------------------------
 
  bio_QPB <- c(-34.37, -27.45175, -28.72525, -27.14533333, -27.59187158, -29.957374)
@@ -45,8 +48,10 @@
  df_QPB <- data.frame(bio_QPB, canopy_QPB)
  
  df_QPB.lm <- lm(bio_QPB ~ canopy_QPB, df_QPB)
+ summary(df_QPB.lm)
  
- ggplot(df_QPB, aes(x=canopy_QPB, y=bio_QPB))+
+ 
+PrietaB <-  ggplot(df_QPB, aes(x=canopy_QPB, y=bio_QPB))+
    geom_point(size=4) +
    
    # Labels
@@ -59,7 +64,10 @@
    theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
    theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black")) +  #subaxis y
    
-   xlim(0,100) + ylim(-35,-24) +
+   xlim(0,80) + ylim(-36,-24) +
    geom_abline(slope = coef(df_QPA.lm)[["canopy_QPA"]], 
                intercept = coef(df_QPA.lm)[["(Intercept)"]])
- 
+
+ggsave("Prieta B.jpeg", path = "figures", PrietaB, 
+       width = 200, height = 180, units = "mm")
+
