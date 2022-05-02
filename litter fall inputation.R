@@ -18,7 +18,7 @@ leafinputation <- "D:/LTER/24 data summary/datasummaryLTER/data/all_variables.xl
 excel_sheets(path = leafinputation)
 dataImp <- read_excel(path = leafinputation, sheet = "leafInputate")
 
-plotA <- dataImp[ ,c(4,7,9,11)]
+plotA <- dataImp[ , c(4,7,9,11)]
 plotA1 <- plotA[c(1:24), ]
 plotA1 <- as.data.frame(plotA1)
 
