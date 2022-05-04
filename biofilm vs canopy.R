@@ -37,7 +37,7 @@ PrietaA <-  ggplot(df_QPA, aes(x=canopy_QPA, y=bio_QPA))+
    geom_abline(slope = coef(df_QPA.lm)[["canopy_QPA"]], 
                intercept = coef(df_QPA.lm)[["(Intercept)"]])
  
- ggsave("Prieta A.jpeg", path = "figures", PrietaA, 
+ ggsave("Prieta A L.jpeg", path = "figures", PrietaA, 
         width = 200, height = 180, units = "mm")
 
   
@@ -64,10 +64,10 @@ PrietaB <-  ggplot(df_QPB, aes(x=canopy_QPB, y=bio_QPB))+
    theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
    theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black")) +  #subaxis y
    
-   xlim(0,80) + ylim(-36,-24) +
-   geom_abline(slope = coef(df_QPA.lm)[["canopy_QPA"]], 
-               intercept = coef(df_QPA.lm)[["(Intercept)"]])
+   xlim(0,80) + ylim(-36,-24) 
+  # geom_abline(slope = coef(df_QPA.lm)[["canopy_QPA"]], 
+  #             intercept = coef(df_QPA.lm)[["(Intercept)"]])
 
-ggsave("Prieta B.jpeg", path = "figures", PrietaB, 
+ggsave("Prieta B L.jpeg", path = "figures", PrietaB, 
        width = 200, height = 180, units = "mm")
 
