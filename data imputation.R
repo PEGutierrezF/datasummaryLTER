@@ -15,6 +15,7 @@ sourcesQPA <- read.csv("data/sourcesQPA.csv")
 head(sourcesQPA)
 
 
-sourcesQPA_imp <- mice(sourcesQPA, m = 100)
+sourcesQPA_imp <- mice(sourcesQPA, m = 100,  seed=14)
+summary(sourcesQPA_imp)
 
-
+complete(sourcesQPA_imp)
