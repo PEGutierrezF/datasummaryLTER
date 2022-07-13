@@ -12,7 +12,15 @@
 
 
 
-sourcesQPA <- read.csv("data/sourcesQPA.csv")
+# cleans global environment
+rm(list = ls())
+
+
+
+network.data <- "data/data.imp.xlsx"
+excel_sheets(path = network.data)
+
+sourcesQPA <- read_excel(path = network.data, sheet = "sourcesQPA")
 
 sourcesQPA_new <- sourcesQPA %>% select(-month)
 
