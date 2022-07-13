@@ -11,11 +11,20 @@
 #  
 
 
+
 sourcesQPA <- read.csv("data/sourcesQPA.csv")
-head(sourcesQPA)
+
+sourcesQPA_new <- sourcesQPA %>% select(-month)
 
 
-sourcesQPA_imp <- mice(sourcesQPA, m = 100,  seed=14)
-summary(sourcesQPA_imp)
+sourcesQPA_imp <- missForest(sourcesQPA_new)
 
-complete(sourcesQPA_imp)
+#check imputed values
+sourcesQPA_imp$ximp
+
+# NRMSE is normalized mean squared error. 
+# check imputation error
+sourcesQPA_imp$OOBerror
+
+#Continuous variables are imputed with 4% error
+
