@@ -26,13 +26,14 @@ sourcesQPA <- read_excel(path = network.data, sheet = "sourcesQPA")
 sourcesQPA_new <- sourcesQPA %>% select(-date, -month)
 # check class
 sapply(sourcesQPA_new, class)
+
 # add NA to empty cells
 sourcesQPA_new[sourcesQPA_new == ""] <- NA
 # convert in data.frame
 sourcesQPA_new <- as.data.frame(sourcesQPA_new)
 
 set.seed(14) # start in the same place, same results
-sourcesQPA_imp <- missForest(sourcesQPA_new)
+sourcesQPA_imp <- missForest(sourcesQPA_new, verbose = T)
 
 #check imputed values
 sourcesQPA_imp$ximp
@@ -42,5 +43,5 @@ sourcesQPA_imp$ximp
 # check imputation error
 sourcesQPA_imp$OOBerror
 
-#Continuous variables are imputed with 4% error
+# Continuous variables are imputed with 4% error
 
