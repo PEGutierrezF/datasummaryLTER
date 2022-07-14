@@ -13,6 +13,6 @@
 # install.packages("mice")
 
 libraries <- c( "ggplot2", "plyr","dplyr", 'patchwork','tidyverse',
-                "readxl", "missForest", "readxl")
+                "readxl", "missForest", "readxl",'xlsx')
 
 lapply(libraries, require, character.only = TRUE)

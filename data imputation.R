@@ -54,3 +54,31 @@ sourcesQPA_imp$OOBerror
 
 
 
+sourcesQPB <- read_excel(path = network.data, sheet = "sourcesQPB")
+
+# Remove characters columns 
+sourcesQPB_new <- sourcesQPB %>% select(-date, -month)
+# check class
+sapply(sourcesQPB_new, class)
+
+# add NA to empty cells
+sourcesQPB_new[sourcesQPB_new == ""] <- NA
+# convert in data.frame
+sourcesQPB_new <- as.data.frame(sourcesQPB_new)
+
+set.seed(14) # start in the same place, same results
+sourcesQPB_imp <- missForest(sourcesQPB_new, verbose = T)
+
+#check imputed values
+PrietaB_imp <- sourcesQPB_imp$ximp
+
+
+# NRMSE is normalized mean squared error. 
+# check imputation error
+sourcesQPB_imp$OOBerror
+
+# Continuous variables are imputed with 9% error
+
+write.xlsx(PrietaB_imp,"D:/LTER/24 data summary/datasummaryLTER/PrietaB.xlsx")
+
+
