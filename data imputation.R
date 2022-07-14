@@ -39,14 +39,16 @@ set.seed(14) # start in the same place, same results
 sourcesQPA_imp <- missForest(sourcesQPA_new, verbose = T)
 
 #check imputed values
-sourcesQPA_imp$ximp
-
+PrietaA_imp <- sourcesQPA_imp$ximp
+PrietaA_imp
 
 # NRMSE is normalized mean squared error. 
 # check imputation error
 sourcesQPA_imp$OOBerror
 
 # Continuous variables are imputed with 4% error
+
+write.xlsx(PrietaA_imp,"D:/LTER/24 data summary/datasummaryLTER/PrietaB.xlsx")
 
 
 
@@ -71,7 +73,7 @@ sourcesQPB_imp <- missForest(sourcesQPB_new, verbose = T)
 
 #check imputed values
 PrietaB_imp <- sourcesQPB_imp$ximp
-
+PrietaB_imp
 
 # NRMSE is normalized mean squared error. 
 # check imputation error
