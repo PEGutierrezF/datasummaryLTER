@@ -20,6 +20,9 @@ rm(list = ls())
 network.data <- "data/data.imp.xlsx"
 excel_sheets(path = network.data)
 
+
+# Source imputation Prieta A ----------------------------------------------
+
 sourcesQPA <- read_excel(path = network.data, sheet = "sourcesQPA")
 
 # Remove characters columns 
@@ -44,4 +47,10 @@ sourcesQPA_imp$ximp
 sourcesQPA_imp$OOBerror
 
 # Continuous variables are imputed with 4% error
+
+
+
+# Source imputation Prieta B ----------------------------------------------
+
+
 
