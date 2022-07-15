@@ -10,7 +10,7 @@
 # ---------------------------------------------
 #  
 
-# install.packages("mice")
+install.packages("xlsx")
 
 libraries <- c( "ggplot2", "plyr","dplyr", 'patchwork','tidyverse',
                 "readxl", "missForest", "readxl",'xlsx')
