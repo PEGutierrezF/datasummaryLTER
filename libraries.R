@@ -15,10 +15,10 @@
 # cleans global environment
 rm(list = ls())
 
-# install.packages("xlsx")
+install.packages("gganimate")
 
 libraries <- c( "ggplot2", "plyr","dplyr", 'patchwork','tidyverse',
-                "readxl", "missForest", "readxl",'xlsx')
+                "readxl", "missForest", "readxl",'xlsx','gganimate')
 
 lapply(libraries, require, character.only = TRUE)
 
