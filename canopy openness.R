@@ -14,7 +14,7 @@
 # UVM office
 canopy <- "C:/Users/pgutierr/OneDrive - University of Vermont/LTER/24 data summary/datasummaryLTER/data/all_variables.xlsx"
 # Personal
-canopy <- "D:/LTER/24 data summary/datasummaryLTER/data/all_variables.xlsx"
+canopy <- "D:/OneDrive - University of Vermont/LTER/24 data summary/datasummaryLTER/data/all_variables.xlsx"
 excel_sheets(path = canopy)
 canopyop <- read_excel(path = canopy, sheet = "canopy")
 
@@ -28,7 +28,7 @@ canopyop$sd = as.numeric(canopyop$sd)
 figure.canopy <- ggplot(canopyop, aes(x=date,y=value, colour=stream)) +
   geom_line(size=0.8) + 
   scale_color_manual(name = "Streams" ,
-                     labels = c("Priea A", "Prieta B"),
+                     labels = c("Prieta A", "Prieta B"),
                      values=c('#ce1256','#0570b0'))+
   geom_point() +
   geom_errorbar(aes(ymax=value+sd, ymin=value-sd), na.rm=TRUE, 
