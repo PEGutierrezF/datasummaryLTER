@@ -2,12 +2,18 @@
 
 
 
+# ---------------------------------------------
+# This is for a Figure using monthly data
+# 23 Aug 2023
+# Pablo E. Gutiérrez-Fonseca
+# pabloe.gutierrezfonseca@gmail.com
+# ---------------------------------------------
+#  
 
 
 
 
-
-shrimp <- "D:/LTER/24 data summary/datasummaryLTER/data/all_variables.xlsx"
+shrimp <- "data/all_variables.xlsx"
 excel_sheets(path = shrimp)
 data.shrimp <- read_excel(path = shrimp, sheet = "shrimp")
 

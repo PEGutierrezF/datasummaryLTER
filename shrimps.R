@@ -2,6 +2,7 @@
 
 # ---------------------------------------------
 # Data summary of Shrimp: Quebrada Prieta A and Prieta B 
+# To summarize data from the Google Drive
 # 20 Mar 2021
 # Pablo E. Gutierrez-Fonseca
 # ---------------------------------------------
