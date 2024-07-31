@@ -15,7 +15,7 @@
 # cleans global environment
 rm(list = ls())
 
-install.packages("gganimate")
+
 
 libraries <- c( "ggplot2", "plyr","dplyr", 'patchwork','tidyverse',
                 "readxl", "missForest", "readxl",'xlsx','gganimate')

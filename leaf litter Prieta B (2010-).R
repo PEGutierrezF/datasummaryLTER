@@ -5,7 +5,6 @@
 # UVM office
 leaf <- "C:/Users/pgutierr/OneDrive - University of Vermont/LTER/24 data summary/datasummaryLTER/data/all_variables.xlsx"
 # Personal
-
 leaf <- "D:/OneDrive - University of Vermont/LTER/24 data summary/datasummaryLTER/data/all_variables.xlsx"
 excel_sheets(path = leaf)
 leaflitter <- read_excel(path = leaf, sheet = "leaf_PB_2010")
