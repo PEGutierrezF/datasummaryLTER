@@ -60,4 +60,6 @@ figure.canopy <- ggplot(canopyop, aes(x=date,y=value, colour=stream)) +
   
 figure.canopy
 
-ggsave("Canopy openness.jpeg", path = "figures", figure.canopy, width = 250, height = 180, units = "mm")
+ggsave("Canopy openness.jpeg", path = "figures", 
+       figure.canopy, width = 250, height = 180, 
+       units = "mm")
