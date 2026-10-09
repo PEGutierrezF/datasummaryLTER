@@ -9,7 +9,7 @@
 #  
 
 
-shrimps <- read.csv("data/shrimp.csv")
+shrimps <- read.csv("shrimp.csv")
 head(shrimps)
 
 sh1 <- shrimps %>%

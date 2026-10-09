@@ -13,7 +13,7 @@
 
 
 
-shrimp <- "data/all_variables.xlsx"
+shrimp <- "all_variables.xlsx"
 excel_sheets(path = shrimp)
 data.shrimp <- read_excel(path = shrimp, sheet = "shrimp")
 
@@ -23,7 +23,7 @@ data.shrimp$sd = as.numeric(data.shrimp$sd)
 
 
 figure.shrimp <- ggplot(data.shrimp, aes(x=date,y=value, colour=stream)) +
-  geom_line(size=0.8) + 
+  geom_line(linewidth = 0.2, linetype = "dotted") + 
   scale_color_manual(name = "Streams" ,
                      labels = c("Priea A", "Prieta B"),
                      values=c('#ce1256','#0570b0')) +
@@ -36,7 +36,7 @@ figure.shrimp <- ggplot(data.shrimp, aes(x=date,y=value, colour=stream)) +
   labs(x= 'Year', y= "Decapoda abundance (" *indv~m^-2* ")") + #  ("*g~m^-2~d^-1*")
   
   
-  geom_point() +
+  geom_point(size = 3.4) +
 #  geom_errorbar(aes(ymax=value+sd, ymin=value-sd),na.rm=TRUE, 
                 # position = position_dodge(width = 0.9),stat = "identity", 
 #                width = 0, colour = "gray50") +

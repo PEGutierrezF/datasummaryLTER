@@ -12,14 +12,14 @@
 
 
 
-macroinv <- read_xlsx("data/all_variables.xlsx", 
+macroinv <- read_xlsx("all_variables.xlsx", 
                       sheet = "macroinvertebrate_QPB")
 tail(macroinv)
 
 
 macroinv$date <-as.POSIXct(macroinv$date,"%Y-%m-%d",tz = "UTC")
 start_date <- as.POSIXct("2009-08-01", tz = "UTC")  # Start date
-end_date <- as.POSIXct("2022-09-01", tz = "UTC")    # End date
+end_date <- as.POSIXct("2026-09-02", tz = "UTC")    # End date
 
 
 macroinv$SE = as.numeric(macroinv$SE)

@@ -2,18 +2,13 @@
 
 
 
-# UVM office
-leaf <- "C:/Users/pgutierr/OneDrive - University of Vermont/LTER/24 data summary/datasummaryLTER/data/all_variables.xlsx"
-# Personal
-leaf <- "D:/OneDrive - University of Vermont/LTER/24 data summary/datasummaryLTER/data/all_variables.xlsx"
-excel_sheets(path = leaf)
-leaflitter <- read_excel(path = leaf, sheet = "leaf_PB_2010")
+leaflitter <- read_excel("all_variables.xlsx", sheet = "leaf_PB_2010")
 head(leaflitter)
-
+tail(leaflitter)
 
 leaflitter$Week<-as.POSIXct(leaflitter$Week,"%Y-%m-%d",tz = "UTC")
 start_date <- as.POSIXct("2010-11-01", tz = "UTC")  # Start date
-end_date <- as.POSIXct("2021-12-31", tz = "UTC")    # End date
+end_date <- as.POSIXct("2026-08-27", tz = "UTC")    # End date
 
 leaf <- ggplot(leaflitter,aes(x=Week,y=Mean)) +
   xlab('Sampling event (2010-2022)')+ ylab("Mean litter input rate ("*g~m^-2~d^-1*")") +
@@ -36,6 +31,7 @@ leaf <- ggplot(leaflitter,aes(x=Week,y=Mean)) +
   theme_classic() 
 
 leaf
+
 ggsave("Leaf Prieta 2010.jpeg", path = "figures", leaf, width = 250, height = 180, units = "mm")
 
 
