@@ -40,7 +40,7 @@ figure.shrimp <- ggplot(data.shrimp, aes(x=date,y=value, colour=stream)) +
 #  geom_errorbar(aes(ymax=value+sd, ymin=value-sd),na.rm=TRUE, 
                 # position = position_dodge(width = 0.9),stat = "identity", 
 #                width = 0, colour = "gray50") +
-  theme_bw() +
+  theme_classic()  +
   
   #Legend
   theme(legend.key.size = unit(0.6, "cm"))+
@@ -58,3 +58,57 @@ figure.shrimp <- ggplot(data.shrimp, aes(x=date,y=value, colour=stream)) +
 figure.shrimp
 
 ggsave("Decapoda.jpeg", path = "figures", figure.litter, width = 160, height = 180, units = "mm")
+
+
+# Mantener las fechas en formato POSIXct
+data.shrimp$date <- as.POSIXct(
+  data.shrimp$date,
+  tz = "UTC"
+)
+
+# Volver a crear el gráfico desde cero
+figure.shrimp <- ggplot(
+  data.shrimp,
+  aes(x = date, y = value, colour = stream, group = stream)
+) +
+  geom_line(linewidth = 0.2, linetype = "dotted") +
+  geom_point(size = 3.4) +
+  scale_color_manual(
+    name = "Streams",
+    labels = c("Prieta A", "Prieta B"),
+    values = c("#ce1256", "#0570b0")
+  ) +
+  scale_y_continuous(
+    labels = scales::number_format(accuracy = 1),
+    breaks = seq(0, 20, by = 3),
+    limits = c(0, 20)
+  ) +
+  scale_x_datetime(
+    breaks = as.POSIXct(
+      paste0(c(2017, 2018, 2019, 2020, 2026), "-01-01"),
+      tz = "UTC"
+    ),
+    date_labels = "%Y"
+  ) +
+  ggbreak::scale_x_break(
+    c(
+      as.POSIXct("2020-10-01", tz = "UTC"),
+      as.POSIXct("2024-12-31", tz = "UTC")
+    ),
+    scales = 0.1
+  ) +
+  labs(
+    x = "Year",
+    y = expression("Decapoda abundance (" * indv ~ m^{-2} * ")")
+  ) +
+  theme_classic() +
+  
+  theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
+  theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
+  theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
+  theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
+
+
+figure.shrimp
+
+ggsave("Decapoda.jpeg", figure.shrimp, width = 250, height = 180, units = "mm")

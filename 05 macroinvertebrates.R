@@ -53,5 +53,56 @@ macroinvert <- ggplot(macroinv, aes(x=date,y=Abundance)) +
 macroinvert
 
 
-ggsave("macroinvert abundance.jpeg", path = "figures", 
-       macroinvert, width = 350, height = 220, units = "mm")
+ggsave("macroinvert abundance.jpeg", 
+       macroinvert, width = 250, height = 180, units = "mm")
+
+
+
+# Luego borras este -------------------------------------------------------
+
+macroinvert <- ggplot(macroinv, aes(x = date, y = Abundance)) +
+  geom_line(linetype = "dotted", colour = "#0570b0") +
+  geom_point(colour = "#0570b0", size = 3.4) +
+  
+  geom_errorbar(
+    aes(ymax = Abundance + SE, ymin = Abundance - SE),
+    na.rm = TRUE,
+    position = "dodge",
+    colour = "#0570b0"
+  ) +
+  
+  xlab("Sampling year") +
+  ylab(expression("Density (" * ind ~ m^{-2} * ")")) +
+  
+  theme_classic() +
+  
+  scale_x_datetime(
+    limits = c(start_date, end_date),
+    breaks = as.POSIXct(
+      paste0(
+        c(2009:2020, 2026),
+        "-01-01"
+      ),
+      tz = "UTC"
+    ),
+    date_labels = "%Y"
+  ) +
+  
+  ggbreak::scale_x_break(
+    c(
+      as.POSIXct("2020-10-01", tz = "UTC"),
+      as.POSIXct("2024-12-31", tz = "UTC")
+    ),
+    scales = 0.1
+  ) +
+  
+  theme(
+    axis.title.x = element_text(size = 20),
+    axis.title.y = element_text(size = 20),
+    axis.text.x = element_text(size = 18, colour = "black"),
+    axis.text.y = element_text(size = 18, colour = "black")
+  )
+
+macroinvert
+
+  
